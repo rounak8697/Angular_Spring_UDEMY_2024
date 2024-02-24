@@ -1,7 +1,4 @@
-<p>Sales-person-list works fine !</p>
-
-Just a quick test that server works fine!!
-
+<h2>Sales TEAM</h2>
 <table border="1" class="table table-hover">
   <thead class="table-dark">
     <tr>
@@ -13,13 +10,13 @@ Just a quick test that server works fine!!
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let temp of salesPersonList">
+    <tr *ngFor="let temp of salesPersonList" [ngClass]="{'highlight': temp.sales >= 2000}">
       <td>{{ temp.firstName }}</td>
       <td>{{ temp.lastName }}</td>
       <td>{{ temp.emailId }}</td>
-      <td>{{ temp.sales }}</td>
+      <td>{{ temp.sales | currency : "INR" }}</td>
       <td>
-        <div *ngIf=" temp.sales >= 2000;else myElseBlock">Matched</div>
+        <div *ngIf="temp.sales >= 2000; else myElseBlock">Matched</div>
         <ng-template #myElseBlock>Not MAtched</ng-template>
       </td>
     </tr>
